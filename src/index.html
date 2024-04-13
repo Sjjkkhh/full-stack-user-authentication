@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>i-shop smart shopping Register</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+
+        $(function(){
+            $("#Login").click(function(){
+                location.href="l.html";
+            })
+        })
+        $(function(){
+            $("#btn").click(function(){
+                var userDetails={
+                    "UserName":$("#UserName").val(),
+                    "LastName":$("#LastName").val(),
+                    "email":$("#email").val(),
+                    "Password":$("#Password").val(),
+                    "City":$("#City").val()
+                };
+                if(userDetails.UserName=="" || userDetails.Password=="" || userDetails.email==""||userDetails.LastName==""){
+                    $("#msg").html("fill rquired field".fontcolor('red'));
+                } 
+                else{
+                    $ .ajax({
+                    method :"POST",
+                    url:"http://localhost:8080/registeruser",
+                    data:userDetails
+                })
+                alert(`Registered Succesfully .Name: ${userDetails.UserName } LastName: ${userDetails.LastName}`);
+                location.href="login.html";
+                }
+               
+            })
+        })
+    </script>
+    <style>
+        body{
+            background-image: url(./img/bb.jpg.png);
+            background-size: cover;
+        }
+        .text input{
+            
+            outline: none;
+            background: none;
+            color: black;
+
+
+        }
+        #btn {
+            background: none;
+            outline: none;
+            
+        }
+        #Login {
+            background: none;
+            outline: none;
+            
+        }
+        .btn{
+            padding: 15px;
+        }#btn:hover{
+            background-color: rgba(15, 165, 196, 0.971);
+            color: black;
+        } #Login:hover{
+            background-color: rgba(15, 165, 196, 0.971);
+            color: black;
+        }.star{
+            padding-left: 4px;
+            color: rgb(181, 10, 10);
+        }
+        .rr{
+            
+        }
+    </style>
+</head>
+<body class="container-fluid">
+    <div class="row">
+        <div class="col-6 rr">
+            <div  class="ms-5">
+                <br> <br> <br> <br> <br> <br> <br> <br>
+                 <h1 class="d-flex align content center"> Wecome to I-Shop </h1><br>
+                 <h3> Register and login Now for smart shopping </h3>
+            </div>
+        </div>
+        <div class="col-3">
+            <br> <br> <br> 
+            <div class=" border border rounded 4 p-4 m-2"  >
+       
+                <div class="mt-4" > <h2>Register User</h2>
+                 <dl>
+                     <dt> <spam class="bi bi-person"></spam>User Name <span  class="star">*</span></dt> 
+                     <dd class="text mt-2"><input type="text" id="UserName" class="form-control w-300" placeholder="write your fisrt name"></dd>
+                     
+                     
+                     <dt class="mt-2">Email<span  class="star">*</span></dt>
+                     <dd class="text mt-2"><input type="text" class="form-control" id="email" placeholder="write your email"></dd>
+                     <dt class="mt-2"><span class="bi bi-eye"></span> Password <span  class="star">*</span></dt>
+                     <dd class="text mt-2"><input type="password"class="form-control" id="Password"placeholder="wirte your email address"></dd>
+                     <dt class="mt-2"> City</dt>
+                     <dd class="text mt-2"><input type="text" class="form-control" id="City" placeholder="enter your city name"></dd>
+                     <div id="msg"></div>
+                 </dl>
+                
+                 <div class="mt-2 "><button id="btn" class="m-2" onclick="reg()">Register</button><button id="Login" class="m-2">Login</button></div>
+             </div>
+           
+             </div>
+        </div>
+      
+    </div>
+   
+   
+   
+</body>
+</html>
